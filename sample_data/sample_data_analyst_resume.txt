@@ -1,0 +1,32 @@
+Priya Patel
+Email: priya.patel@example.com | Phone: +91 98765 12345
+Location: Mumbai, India | LinkedIn: https://linkedin.com/in/priyapatel
+
+PROFESSIONAL SUMMARY
+Analytical and results-oriented Data Analyst with proficiency in Python, SQL, Pandas, and Data Visualization. Experienced in building automated reporting dashboards, extracting actionable business insights from relational databases, and statistical data modeling.
+
+TECHNICAL SKILLS
+- Programming & Querying: Python, SQL
+- Data Manipulation: Pandas, NumPy
+- Visualization & BI: Data Visualization, Matplotlib, Seaborn, Excel
+- Version Control: Git, GitHub
+
+WORK EXPERIENCE
+Data Analyst Intern | Analytics Insights Corp
+Mumbai, India | Jul 2024 - Dec 2024
+- Authored complex SQL aggregation queries to extract weekly customer retention cohorts across 250,000+ transaction records.
+- Utilized Python and Pandas to clean and process messy telemetry datasets, accelerating report generation by 45%.
+- Designed interactive visual reports and Excel dashboards presented to senior management to guide operational budgeting.
+
+PROJECTS
+1. E-Commerce Customer Churn Analysis
+- Analyzed 50,000+ consumer records using Python, Pandas, and SQL to identify key churn indicators.
+- Created visualizations highlighting churn correlations and delivered actionable mitigation strategies.
+
+2. Sales Performance & Revenue Dashboard
+- Built an automated Excel and Python reporting dashboard tracking daily GMV and inventory turnover metrics.
+
+EDUCATION
+Bachelor of Science (B.Sc) in Statistics & Computer Applications
+Mumbai University | 2021 - 2024 | GPA: 8.9 / 10.0
+

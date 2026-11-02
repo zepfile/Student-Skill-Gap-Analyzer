@@ -1,0 +1,33 @@
+Aarav Sharma
+Email: aarav.sharma@example.com | Phone: +91 9876543210
+GitHub: https://github.com/aaravsharma | LinkedIn: https://linkedin.com/in/aaravsharma
+
+SUMMARY
+Enthusiastic Data Science graduate with a strong foundation in statistical modeling, exploratory data analysis, and predictive machine learning. Passionate about leveraging data-driven insights to solve complex real-world problems.
+
+EDUCATION
+Bachelor of Technology in Computer Science & Engineering
+ABC Institute of Technology, 2020 - 2024 | GPA: 8.7/10
+
+TECHNICAL SKILLS
+- Programming: Python, SQL
+- Data Analysis & Libraries: Pandas, NumPy, Matplotlib, Seaborn, Scikit-Learn
+- Machine Learning: Regression, Classification, Clustering, Random Forest, Decision Trees, Cross-Validation
+- Tools & Platforms: Git, GitHub, Jupyter Notebook, VS Code, Google Colab
+- Database: MySQL, PostgreSQL
+- Soft Skills: Problem Solving, Critical Thinking, Team Collaboration
+
+PROJECTS
+1. Customer Churn Prediction Engine
+- Developed an end-to-end churn prediction pipeline using Python and Scikit-Learn.
+- Performed extensive exploratory data analysis with Pandas and visual dashboards with Seaborn.
+- Achieved an 86% F1-score using Random Forest classifier and hyperparameter tuning.
+
+2. Retail Sales Performance Dashboard
+- Cleaned and aggregated 500,000+ sales records using Pandas and SQL queries.
+- Visualized regional trends and product seasonality with Matplotlib and interactive charts.
+
+CERTIFICATIONS
+- Python for Data Science and Machine Learning Bootcamp (Udemy)
+- Advanced SQL for Analytics (Coursera)
+

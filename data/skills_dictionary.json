@@ -1,0 +1,293 @@
+{
+  "skills": {
+    "Python": {
+      "category": "Programming Languages",
+      "aliases": ["python", "python3", "py", "python programming"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "Python for Everybody (Specialization)", "platform": "Coursera", "url": "https://www.coursera.org/specializations/python", "type": "Free to Audit"},
+        {"title": "Core Python Programming Bootcamp", "platform": "YouTube / freeCodeCamp", "url": "https://www.youtube.com/watch?v=rfscVS0vtbw", "type": "Free"}
+      ],
+      "project_ideas": ["Build an automated web scraper with BeautifulSoup", "Create an API with FastAPI/Flask"]
+    },
+    "JavaScript": {
+      "category": "Programming Languages",
+      "aliases": ["javascript", "js", "ecmascript", "es6", "es6+"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "The Complete JavaScript Course: From Zero to Expert", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "JavaScript Tutorial for Beginners", "platform": "freeCodeCamp", "url": "https://www.freecodecamp.org", "type": "Free"}
+      ],
+      "project_ideas": ["Interactive Kanban Board with Vanilla JS", "Browser Extension for Note Taking"]
+    },
+    "TypeScript": {
+      "category": "Programming Languages",
+      "aliases": ["typescript", "ts"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Understanding TypeScript", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "TypeScript Handbook & Docs", "platform": "TypeScript Official", "url": "https://www.typescriptlang.org/docs/", "type": "Free"}
+      ],
+      "project_ideas": ["Typed Full-Stack CRUD Application", "Type-safe State Management Library"]
+    },
+    "Java": {
+      "category": "Programming Languages",
+      "aliases": ["java", "core java", "java 8", "java 11", "java 17"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Java Programming Masterclass", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Java Tutorial for Beginners", "platform": "YouTube / Programming with Mosh", "url": "https://www.youtube.com", "type": "Free"}
+      ],
+      "project_ideas": ["Enterprise Banking System with Spring Boot", "Multi-threaded Chat Application"]
+    },
+    "C++": {
+      "category": "Programming Languages",
+      "aliases": ["c++", "cpp", "c/c++"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "Beginning C++ Programming", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Learn C++ Online", "platform": "learncpp.com", "url": "https://www.learncpp.com", "type": "Free"}
+      ],
+      "project_ideas": ["Custom Memory Allocator", "2D Game Engine using SFML"]
+    },
+    "SQL": {
+      "category": "Databases & Storage",
+      "aliases": ["sql", "structured query language", "mysql", "postgresql", "postgres", "sqlite", "t-sql", "pl/sql"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "The Complete SQL Bootcamp", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "SQL Tutorial", "platform": "W3Schools / Khan Academy", "url": "https://www.khanacademy.org/computing/computer-programming/sql", "type": "Free"}
+      ],
+      "project_ideas": ["E-commerce Data Warehouse & Analytics Queries", "Normalized Retail Inventory Database"]
+    },
+    "React": {
+      "category": "Frontend Frameworks",
+      "aliases": ["react", "react.js", "reactjs", "react native"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "The Complete React Developer Course", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "React Official Interactive Tutorial", "platform": "React Docs", "url": "https://react.dev", "type": "Free"}
+      ],
+      "project_ideas": ["SaaS Dashboard with Dark Mode and Analytics", "Real-time Collaborative Whiteboard"]
+    },
+    "Node.js": {
+      "category": "Backend Development",
+      "aliases": ["node", "node.js", "nodejs", "express", "express.js", "expressjs"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "The Complete Node.js Developer Course", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Node.js Crash Course", "platform": "YouTube / Traversy Media", "url": "https://www.youtube.com", "type": "Free"}
+      ],
+      "project_ideas": ["Scalable RESTful API with JWT Authentication", "Real-time WebSocket Chat Backend"]
+    },
+    "Flask": {
+      "category": "Backend Development",
+      "aliases": ["flask", "flask-restful", "flask framework"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "Flask Mega-Tutorial by Miguel Grinberg", "platform": "Blog / Tutorial", "url": "https://blog.miguelgrinberg.com", "type": "Free"},
+        {"title": "REST APIs with Flask and Python", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"}
+      ],
+      "project_ideas": ["Microservices-based Content Management System", "ML Model Deployment Service with Flask"]
+    },
+    "Django": {
+      "category": "Backend Development",
+      "aliases": ["django", "django rest framework", "drf"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Python and Django Full Stack Bootcamp", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Django for Beginners", "platform": "Official Docs / freeCodeCamp", "url": "https://docs.djangoproject.com", "type": "Free"}
+      ],
+      "project_ideas": ["Full Featured Social Network with Custom Auth", "Job Board Portal with Application Tracking"]
+    },
+    "Pandas": {
+      "category": "Data Science & Analytics",
+      "aliases": ["pandas", "pd", "pandas dataframe"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "Data Analysis with Python and Pandas", "platform": "Coursera", "url": "https://www.coursera.org", "type": "Free to Audit"},
+        {"title": "Pandas Official 10-Minute Guide", "platform": "Pandas Docs", "url": "https://pandas.pydata.org", "type": "Free"}
+      ],
+      "project_ideas": ["Financial Market Trend Analysis & Report", "Customer Churn Exploratory Data Analysis (EDA)"]
+    },
+    "NumPy": {
+      "category": "Data Science & Analytics",
+      "aliases": ["numpy", "np", "numerical python"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "Deep Dive into NumPy", "platform": "freeCodeCamp", "url": "https://www.freecodecamp.org", "type": "Free"},
+        {"title": "NumPy for Data Science", "platform": "DataCamp", "url": "https://www.datacamp.com", "type": "Paid"}
+      ],
+      "project_ideas": ["Matrix Operations Engine from Scratch", "Image Manipulation & Filters with NumPy"]
+    },
+    "Machine Learning": {
+      "category": "AI & Machine Learning",
+      "aliases": ["machine learning", "ml", "scikit-learn", "sklearn", "supervised learning", "unsupervised learning", "classification", "regression", "clustering"],
+      "importance_weight": 1.6,
+      "resources": [
+        {"title": "Machine Learning Specialization by Andrew Ng", "platform": "Coursera / DeepLearning.AI", "url": "https://www.coursera.org/specializations/machine-learning-introduction", "type": "Free to Audit"},
+        {"title": "Hands-On Machine Learning with Scikit-Learn", "platform": "O'Reilly Book", "url": "https://www.oreilly.com", "type": "Paid"}
+      ],
+      "project_ideas": ["House Price Prediction Pipeline with Scikit-Learn", "Customer Segmentation with K-Means"]
+    },
+    "Deep Learning": {
+      "category": "AI & Machine Learning",
+      "aliases": ["deep learning", "neural networks", "ann", "cnn", "rnn", "lstm", "transformers"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "Deep Learning Specialization", "platform": "Coursera / DeepLearning.AI", "url": "https://www.coursera.org/specializations/deep-learning", "type": "Free to Audit"},
+        {"title": "Fast.ai Practical Deep Learning for Coders", "platform": "Fast.ai", "url": "https://course.fast.ai", "type": "Free"}
+      ],
+      "project_ideas": ["Image Classification using CNN & ResNet", "Stock Price Forecasting with LSTM Networks"]
+    },
+    "NLP": {
+      "category": "AI & Machine Learning",
+      "aliases": ["nlp", "natural language processing", "spacy", "nltk", "text processing", "tokenization", "lemmatization", "sentiment analysis", "huggingface", "llm", "bert"],
+      "importance_weight": 1.6,
+      "resources": [
+        {"title": "Natural Language Processing Specialization", "platform": "Coursera / DeepLearning.AI", "url": "https://www.coursera.org/specializations/natural-language-processing", "type": "Free to Audit"},
+        {"title": "Hugging Face NLP Course", "platform": "Hugging Face", "url": "https://huggingface.co/learn/nlp-course", "type": "Free"}
+      ],
+      "project_ideas": ["Resume Parser & Entity Extraction System", "Sentiment Analysis of Social Media Tweets with BERT"]
+    },
+    "TensorFlow": {
+      "category": "AI & Machine Learning",
+      "aliases": ["tensorflow", "tf", "keras"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "DeepLearning.AI TensorFlow Developer", "platform": "Coursera", "url": "https://www.coursera.org", "type": "Paid"},
+        {"title": "TensorFlow 2.0 Official Tutorials", "platform": "tensorflow.org", "url": "https://www.tensorflow.org/tutorials", "type": "Free"}
+      ],
+      "project_ideas": ["Computer Vision Object Detection model", "Transfer Learning classifier"]
+    },
+    "PyTorch": {
+      "category": "AI & Machine Learning",
+      "aliases": ["pytorch", "torch"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "PyTorch for Deep Learning Bootcamp", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Deep Learning with PyTorch: A 60 Minute Blitz", "platform": "pytorch.org", "url": "https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html", "type": "Free"}
+      ],
+      "project_ideas": ["Generative Adversarial Network (GAN) for Digits", "Fine-tuning Llama/BERT on Custom Dataset"]
+    },
+    "Docker": {
+      "category": "DevOps & Cloud",
+      "aliases": ["docker", "containerization", "docker-compose", "containers"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Docker & Kubernetes: The Practical Guide", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Docker Tutorial for Beginners", "platform": "YouTube / TechWorld with Nana", "url": "https://www.youtube.com", "type": "Free"}
+      ],
+      "project_ideas": ["Multi-container Web App Deployment with Docker Compose", "Optimized Multi-stage Dockerfile for Flask & React"]
+    },
+    "Kubernetes": {
+      "category": "DevOps & Cloud",
+      "aliases": ["kubernetes", "k8s", "kubectl", "helm"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Certified Kubernetes Administrator (CKA)", "platform": "Udemy / KodeKloud", "url": "https://kodekloud.com", "type": "Paid"},
+        {"title": "Kubernetes Interactive Labs", "platform": "Killercoda", "url": "https://killercoda.com", "type": "Free"}
+      ],
+      "project_ideas": ["Microservices Auto-scaling cluster on Minikube", "Deploy Highly Available Ingress with TLS"]
+    },
+    "AWS": {
+      "category": "DevOps & Cloud",
+      "aliases": ["aws", "amazon web services", "ec2", "s3", "lambda", "iam", "cloudwatch"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "AWS Certified Solutions Architect Associate", "platform": "Udemy / Stephane Maarek", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "AWS Skill Builder Free Digital Training", "platform": "Amazon", "url": "https://explore.skillbuilder.aws", "type": "Free"}
+      ],
+      "project_ideas": ["Serverless REST API using Lambda, API Gateway & DynamoDB", "Automated S3 Static Site with CloudFront CDN"]
+    },
+    "CI/CD": {
+      "category": "DevOps & Cloud",
+      "aliases": ["ci/cd", "ci cd", "github actions", "gitlab ci", "jenkins", "continuous integration", "continuous deployment"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "GitHub Actions - The Complete Guide", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Automate Workflows with GitHub Actions", "platform": "GitHub Docs", "url": "https://docs.github.com/actions", "type": "Free"}
+      ],
+      "project_ideas": ["Automated Unit Test and Linting CI Pipeline", "Continuous Deployment pipeline to Cloud on merge"]
+    },
+    "Git & GitHub": {
+      "category": "Tools & Version Control",
+      "aliases": ["git", "github", "version control", "gitlab", "branching", "git rebase"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Git Complete: The definitive step-by-step guide", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"},
+        {"title": "Version Control with Git", "platform": "Coursera / Atlassian", "url": "https://www.coursera.org", "type": "Free to Audit"}
+      ],
+      "project_ideas": ["Open Source Contribution with Pull Request flow", "Manage complex Git GitFlow workflow project"]
+    },
+    "Data Visualization": {
+      "category": "Data Science & Analytics",
+      "aliases": ["data visualization", "matplotlib", "seaborn", "tableau", "power bi", "powerbi", "plotly", "d3.js"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "Data Visualization with Python", "platform": "Coursera / IBM", "url": "https://www.coursera.org", "type": "Free to Audit"},
+        {"title": "Tableau for Beginners", "platform": "Tableau Public Tutorials", "url": "https://public.tableau.com", "type": "Free"}
+      ],
+      "project_ideas": ["Interactive Covid/Economic KPI Dashboard", "Sales Analytics Executive Storyboard"]
+    },
+    "REST APIs": {
+      "category": "Backend Development",
+      "aliases": ["rest api", "rest apis", "restful", "restful api", "api development", "postman", "swagger", "openapi"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "API Design and Documentation with OpenAPI", "platform": "Coursera", "url": "https://www.coursera.org", "type": "Free to Audit"},
+        {"title": "Postman API Fundamentals Student Expert", "platform": "Postman Academy", "url": "https://academy.postman.com", "type": "Free"}
+      ],
+      "project_ideas": ["Build and document a full CRUD API with Swagger UI", "Rate-limited API Gateway"]
+    },
+    "MongoDB": {
+      "category": "Databases & Storage",
+      "aliases": ["mongodb", "mongo", "nosql", "mongoose"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "MongoDB University - Developer Path", "platform": "MongoDB University", "url": "https://learn.mongodb.com", "type": "Free"},
+        {"title": "Complete MongoDB Course", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"}
+      ],
+      "project_ideas": ["Document-oriented Catalog System", "Geospatial Location Query App with MongoDB"]
+    },
+    "Cybersecurity": {
+      "category": "Security & Networks",
+      "aliases": ["cybersecurity", "information security", "infosec", "network security", "penetration testing", "owasp", "ethical hacking", "vulnerability assessment"],
+      "importance_weight": 1.4,
+      "resources": [
+        {"title": "Google Cybersecurity Professional Certificate", "platform": "Coursera", "url": "https://www.coursera.org/professional-certificates/google-cybersecurity", "type": "Free to Audit"},
+        {"title": "TryHackMe Pre-Security Path", "platform": "TryHackMe", "url": "https://tryhackme.com", "type": "Free"}
+      ],
+      "project_ideas": ["Vulnerability Scanner using Python & Nmap", "Secure Authentication with 2FA & OWASP Hardening"]
+    },
+    "Linux": {
+      "category": "Operating Systems & Tools",
+      "aliases": ["linux", "bash", "shell scripting", "ubuntu", "unix", "cli"],
+      "importance_weight": 1.3,
+      "resources": [
+        {"title": "Linux Command Line Basics", "platform": "Udacity", "url": "https://www.udacity.com", "type": "Free"},
+        {"title": "Linux Administration Bootcamp", "platform": "Udemy", "url": "https://www.udemy.com", "type": "Paid"}
+      ],
+      "project_ideas": ["Automated Server Backup & Log Archiving Bash Script", "System Health Monitoring Cronjob Alert Service"]
+    },
+    "Data Structures & Algorithms": {
+      "category": "Computer Science Core",
+      "aliases": ["data structures", "algorithms", "dsa", "leetcode", "arrays", "trees", "graphs", "dynamic programming"],
+      "importance_weight": 1.5,
+      "resources": [
+        {"title": "Algorithms, Part I & II (Princeton)", "platform": "Coursera", "url": "https://www.coursera.org/learn/algorithms-part1", "type": "Free"},
+        {"title": "NeetCode 150 & Roadmap", "platform": "NeetCode.io", "url": "https://neetcode.io", "type": "Free"}
+      ],
+      "project_ideas": ["Custom Graph Pathfinding Visualizer (A*, Dijkstra)", "Trie-based Auto-complete Search Engine"]
+    },
+    "Communication & Collaboration": {
+      "category": "Soft Skills",
+      "aliases": ["communication", "collaboration", "teamwork", "leadership", "problem solving", "presentation", "critical thinking", "agile", "scrum"],
+      "importance_weight": 1.0,
+      "resources": [
+        {"title": "Effective Communication in Tech Teams", "platform": "LinkedIn Learning / Coursera", "url": "https://www.coursera.org", "type": "Free to Audit"}
+      ],
+      "project_ideas": ["Write clear technical design documentation for an open source project", "Lead a sprint planning review"]
+    }
+  }
+}

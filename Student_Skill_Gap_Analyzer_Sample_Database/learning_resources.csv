@@ -1,0 +1,16 @@
+skill,resource_type,resource_name,resource_url
+Python,Practice,Python basics and exercises,https://www.python.org/about/gettingstarted/
+Java,Tutorial,Java Tutorials,https://dev.java/learn/
+SQL,Tutorial,SQL Tutorial,https://www.w3schools.com/sql/
+Flask,Documentation,Flask Quickstart,https://flask.palletsprojects.com/en/stable/quickstart/
+Git,Tutorial,Git Handbook,https://guides.github.com/introduction/git-handbook/
+REST APIs,Tutorial,MDN HTTP overview,https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
+HTML,Tutorial,HTML Tutorial,https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content
+CSS,Tutorial,CSS Tutorial,https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics
+JavaScript,Tutorial,JavaScript Guide,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+Pandas,Documentation,Pandas Getting Started,https://pandas.pydata.org/docs/getting_started/index.html
+Data Visualization,Tutorial,Matplotlib Tutorials,https://matplotlib.org/stable/tutorials/index.html
+Excel,Practice,Excel training,https://support.microsoft.com/excel
+OOP,Practice,Object-oriented programming concepts,https://docs.python.org/3/tutorial/classes.html
+Data Structures and Algorithms,Practice,VisuAlgo,https://visualgo.net/en
+Testing and Debugging,Documentation,Python unittest,https://docs.python.org/3/library/unittest.html

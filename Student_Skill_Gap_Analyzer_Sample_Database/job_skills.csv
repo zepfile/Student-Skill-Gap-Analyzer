@@ -1,0 +1,26 @@
+role_id,job_role,skill,required_level,importance_weight
+1,Python Developer,Python,3,5
+1,Python Developer,SQL,2,4
+1,Python Developer,Flask,2,4
+1,Python Developer,Git,2,3
+1,Python Developer,REST APIs,2,4
+2,Java Developer,Java,3,5
+2,Java Developer,OOP,3,5
+2,Java Developer,SQL,2,4
+2,Java Developer,Git,2,3
+2,Java Developer,Data Structures and Algorithms,3,5
+3,Web Developer,HTML,3,5
+3,Web Developer,CSS,3,5
+3,Web Developer,JavaScript,3,5
+3,Web Developer,SQL,2,3
+3,Web Developer,Git,2,3
+4,Data Analyst,Python,2,4
+4,Data Analyst,SQL,3,5
+4,Data Analyst,Pandas,3,5
+4,Data Analyst,Data Visualization,2,4
+4,Data Analyst,Excel,2,3
+5,Software Engineer,Data Structures and Algorithms,3,5
+5,Software Engineer,OOP,3,5
+5,Software Engineer,Git,2,3
+5,Software Engineer,SQL,2,3
+5,Software Engineer,Testing and Debugging,2,4

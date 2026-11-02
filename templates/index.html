@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Skill Gap Analyzer | Career Readiness & ATS Optimization Platform</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3.3 & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern UI Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  
+  <!-- Chart.js & Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Ambient Radial Glow Element -->
+  <div class="ambient-glow"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg sticky-top glass-nav">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <div class="brand-icon">
+          <i class="bi bi-cpu-fill"></i>
+        </div>
+        <div>
+          <span class="brand-title">SkillGap<span class="gradient-text">Analyzer</span></span>
+          <span class="badge bg-success-subtle text-success border border-success-subtle ms-2 d-none d-sm-inline">
+            <span class="pulse-dot"></span> SQLite &bull; NLP Engine
+          </span>
+        </div>
+      </a>
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <!-- Day / Night Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Toggle Day/Night Mode">
+          <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+          <span class="d-none d-md-inline" id="themeText">Night</span>
+        </button>
+        <!-- Quick Sample Resume Button -->
+        <button class="btn btn-sm btn-outline-light d-flex align-items-center gap-2" id="quickSampleBtn" type="button">
+          <i class="bi bi-magic text-warning"></i>
+          <span class="d-none d-md-inline">Sample Resume</span>
+        </button>
+        <!-- User Guide Link -->
+        <a href="#howItWorksModal" data-bs-toggle="modal" class="nav-guide-link d-flex align-items-center gap-1 text-decoration-none">
+          <i class="bi bi-question-circle"></i> <span>Guide</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-section text-center py-5">
+    <div class="container py-3">
+      <div class="badge hero-badge mb-3">
+        <i class="bi bi-stars text-warning me-1"></i> Data-Driven Career Acceleration &bull; 2026 Industry Standard
+      </div>
+      <h1 class="hero-title display-5 fw-extrabold mb-3">
+        Bridge the Gap Between <span class="gradient-text">What You Know</span> <br class="d-none d-md-block">and <span class="gradient-text-alt">What Companies Hire For</span>
+      </h1>
+      <p class="hero-subtitle mx-auto mb-4" style="max-width: 720px;">
+        Upload your resume or paste profile text. Our NLP engine extracts technical skills, benchmarks your profile against industry standards from SQLite, scores your ATS readability, and builds a customized learning roadmap.
+      </p>
+
+      <!-- Feature Highlight Badges -->
+      <div class="hero-feature-pills">
+        <span class="hero-pill"><i class="bi bi-database-check text-primary"></i> 5 Industry Role Taxonomies</span>
+        <span class="hero-pill"><i class="bi bi-lightning-charge text-warning"></i> Real-Time Gap Recalculator</span>
+        <span class="hero-pill"><i class="bi bi-shield-check text-success"></i> 2026 ATS Resume Audit</span>
+        <span class="hero-pill"><i class="bi bi-signpost-split text-info"></i> Phased Learning Roadmap</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <main class="container px-lg-5 mb-5">
+    
+    <!-- Input Section Card -->
+    <div class="card main-card shadow-lg mb-5" id="inputCard">
+      <div class="card-body p-4 p-md-5">
+        <form id="analyzerForm" enctype="multipart/form-data">
+          
+          <div class="row g-4">
+            <!-- Left Column: Role Selector (Step 1) -->
+            <div class="col-lg-5 border-end-lg">
+              <div class="step-label mb-2"><span class="step-number">1</span> Choose Target Role</div>
+              <h5 class="fw-bold mb-3">What position are you aiming for?</h5>
+              
+              <div class="mb-3">
+                <label class="form-label text-muted small fw-semibold">Target Industry Role</label>
+                <select class="form-select form-select-lg custom-select" id="roleSelector" name="role_id" required>
+                  {% for r in roles %}
+                  <option value="{{ r.id }}" data-category="{{ r.category }}" data-demand="{{ r.market_demand }}" data-salary="{{ r.avg_salary }}" data-growth="{{ r.growth_rate }}" data-description="{{ r.description }}">
+                    {{ r.title }} ({{ r.category }})
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <!-- Selected Role Snapshot Card -->
+              <div class="role-snapshot p-3 mt-3" id="roleSnapshot">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-info-subtle text-info fw-bold" id="snapshotCategory">Software Engineering</span>
+                  <div class="d-flex gap-1">
+                    <span class="badge bg-success-subtle text-success" id="snapshotGrowth">
+                      <i class="bi bi-graph-up-arrow me-1"></i> +24% YoY
+                    </span>
+                    <span class="badge bg-warning-subtle text-warning" id="snapshotDemand">
+                      <i class="bi bi-fire me-1"></i> 9.2/10
+                    </span>
+                  </div>
+                </div>
+                <div class="small text-muted mb-2" id="snapshotDesc">
+                  Designs, builds, and maintains software solutions using standard frameworks.
+                </div>
+                <div class="small fw-semibold text-secondary">
+                  <i class="bi bi-cash-stack text-success me-1"></i> Typical Compensation: <span class="text-light" id="snapshotSalary">₹8 - ₹18 LPA / $85k - $120k</span>
+                </div>
+              </div>
+
+              <!-- Quick Demo Resumes (Interactive Chips) -->
+              <div class="mt-4">
+                <div class="small text-muted fw-semibold mb-2">Or load pre-configured test profiles:</div>
+                <div class="d-flex gap-2 flex-wrap">
+                  <button type="button" class="btn btn-sample" data-sample="python_developer">
+                    <i class="bi bi-code-slash text-primary me-1"></i> Python Dev (Rohan)
+                  </button>
+                  <button type="button" class="btn btn-sample" data-sample="data_analyst">
+                    <i class="bi bi-bar-chart-line text-info me-1"></i> Data Analyst (Aarav)
+                  </button>
+                  <button type="button" class="btn btn-sample" data-sample="web_developer">
+                    <i class="bi bi-globe text-warning me-1"></i> Web Dev (Priya)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Resume Input (Step 2) -->
+            <div class="col-lg-7">
+              <div class="step-label mb-2"><span class="step-number">2</span> Provide Your Profile / Resume</div>
+              <h5 class="fw-bold mb-3">Upload your document or paste raw text</h5>
+
+              <!-- Mode Toggle Tabs -->
+              <ul class="nav custom-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="tab-upload" data-bs-toggle="pill" data-bs-target="#content-upload" type="button" role="tab">
+                    <i class="bi bi-cloud-arrow-up me-1"></i> Upload File (PDF / DOCX)
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-paste" data-bs-toggle="pill" data-bs-target="#content-paste" type="button" role="tab">
+                    <i class="bi bi-clipboard2-pulse me-1"></i> Paste Text
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="pills-tabContent">
+                <!-- File Upload Tab -->
+                <div class="tab-pane fade show active" id="content-upload" role="tabpanel">
+                  <div class="upload-dropzone p-4 text-center" id="dropzone">
+                    <input type="file" id="resumeFileInput" name="resume_file" accept=".pdf,.docx,.doc,.txt" class="d-none">
+                    <div class="dropzone-content py-3">
+                      <div class="dropzone-icon mb-2">
+                        <i class="bi bi-file-earmark-arrow-up-fill"></i>
+                      </div>
+                      <h6 class="fw-bold mb-1">Drag and drop your resume file here</h6>
+                      <p class="small text-muted mb-3">Supports PDF, DOCX, DOC and TXT (Max 16 MB)</p>
+                      <button type="button" class="btn btn-outline-primary btn-sm px-4" onclick="document.getElementById('resumeFileInput').click()">
+                        <i class="bi bi-folder2-open me-1"></i> Browse Files
+                      </button>
+                      <div id="fileSelectedBadge" class="mt-3 d-none">
+                        <span class="badge bg-success-subtle text-success p-2">
+                          <i class="bi bi-check-circle-fill me-1"></i> <span id="fileNameDisplay">filename.pdf</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Paste Text Tab -->
+                <div class="tab-pane fade" id="content-paste" role="tabpanel">
+                  <div class="mb-2">
+                    <textarea class="form-control custom-textarea" id="resumeTextArea" name="resume_text" rows="8" placeholder="Paste your resume content, technical skills, projects, and work experience here..."></textarea>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center small text-muted">
+                    <span id="charCount">0 characters</span>
+                    <button type="button" class="btn btn-link btn-sm text-muted text-decoration-none p-0" id="clearTextBtn">Clear text</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Action Button -->
+              <div class="mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold d-flex align-items-center justify-content-center gap-2" id="analyzeSubmitBtn">
+                  <i class="bi bi-cpu"></i>
+                  <span>Analyze Skill Gap & ATS Score</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Loading State Indicator -->
+    <div id="loadingState" class="text-center py-5 d-none">
+      <div class="spinner-grow text-primary mb-3" style="width: 3.2rem; height: 3.2rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h4 class="fw-bold">Analyzing Your Skill Profile...</h4>
+      <p class="text-muted small">Tokenizing text &bull; Benchmarking SQLite database &bull; Evaluating ATS readability &bull; Formulating roadmap</p>
+    </div>
+
+    <!-- Error Alert Banner -->
+    <div id="errorAlert" class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      <span id="errorMessage">Something went wrong during analysis.</span>
+      <button type="button" class="btn-close" onclick="document.getElementById('errorAlert').classList.add('d-none')"></button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- RESULTS DASHBOARD (Revealed after analysis) -->
+    <!-- ========================================== -->
+    <div id="resultsDashboard" class="d-none">
+
+      <!-- Action Bar -->
+      <div class="dashboard-action-bar d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+          <h2 class="fw-bold mb-1 d-flex align-items-center gap-2">
+            <span>Assessment Results: <span id="resultRoleTitle" class="gradient-text">Python Developer</span></span>
+          </h2>
+          <p class="text-muted small mb-0" id="resultSubtitle">Detailed technical skill audit, gap severity, and curated curriculum.</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn btn-outline-info btn-sm" id="downloadReportBtn">
+            <i class="bi bi-file-earmark-arrow-down me-1"></i> Export Report (.md)
+          </button>
+          <button class="btn btn-outline-secondary btn-sm" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> Print / PDF
+          </button>
+          <button class="btn btn-primary btn-sm" id="reAnalyzeBtn">
+            <i class="bi bi-arrow-repeat me-1"></i> Test Another Role
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Summary Metrics Grid (4 Metric Cards) -->
+      <div class="row g-3 mb-4">
+        <!-- Metric 1: Readiness Score -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card metric-card h-100">
+            <div class="metric-label">Job Readiness Index</div>
+            <div class="d-flex align-items-baseline gap-2 my-2">
+              <span class="metric-value text-primary" id="readinessScoreVal">78.5%</span>
+              <span class="badge" id="readinessBadge">High Match</span>
+            </div>
+            <div class="progress custom-progress" style="height: 6px;">
+              <div class="progress-bar" id="readinessProgressBar" style="width: 78%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 2: ATS Compatibility -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card metric-card h-100">
+            <div class="metric-label">ATS Resume Score</div>
+            <div class="d-flex align-items-baseline gap-2 my-2">
+              <span class="metric-value text-success" id="atsScoreVal">82</span>
+              <span class="small text-muted">/ 100</span>
+              <span class="badge" id="atsBadge">Good</span>
+            </div>
+            <div class="small text-muted" id="atsVerbsSummary">
+              <i class="bi bi-check-all text-success me-1"></i> 5 Action Verbs Detected
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Critical Core Gaps -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card metric-card h-100">
+            <div class="metric-label">Core Skills Missing</div>
+            <div class="d-flex align-items-baseline gap-2 my-2">
+              <span class="metric-value text-danger" id="missingCoreCount">2</span>
+              <span class="small text-muted">high priority</span>
+            </div>
+            <div class="small text-muted" id="coreCoverageRatio">
+              3 of 5 core skills verified
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Estimated Roadmap Time -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card metric-card h-100">
+            <div class="metric-label">Estimated Bridge Time</div>
+            <div class="d-flex align-items-baseline gap-2 my-2">
+              <span class="metric-value text-warning" id="estWeeksVal">5 Weeks</span>
+              <span class="small text-muted">~60 hrs total</span>
+            </div>
+            <div class="small text-muted">
+              <i class="bi bi-mortarboard text-warning me-1"></i> Step-by-step roadmap ready
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salary & Market Intelligence Banner -->
+      <div class="card shadow-sm mb-4 border-primary-subtle" style="background: rgba(99, 102, 241, 0.04); border-radius: 16px;">
+        <div class="card-body p-3 p-md-4">
+          <div class="row align-items-center g-3">
+            <div class="col-md-3 border-end">
+              <div class="small text-muted text-uppercase fw-bold">Market Demand & Growth</div>
+              <div class="h5 fw-bold text-light mb-1 mt-1" id="marketGrowthDisplay">+24% YoY Growth</div>
+              <span class="badge bg-warning-subtle text-warning" id="marketDemandRating">Rating: 9.2/10</span>
+            </div>
+            <div class="col-md-5 border-end">
+              <div class="small text-muted text-uppercase fw-bold mb-1">Compensation Range (Industry Benchmark)</div>
+              <div class="d-flex justify-content-between small">
+                <span>Entry (25th): <strong class="text-light" id="salaryP25">₹6 LPA</strong></span>
+                <span>Median: <strong class="text-success" id="salaryMedian">₹12 LPA</strong></span>
+                <span>Senior (90th): <strong class="text-warning" id="salaryP90">₹22 LPA</strong></span>
+              </div>
+              <div class="progress custom-progress mt-2" style="height: 6px;">
+                <div class="progress-bar bg-success" style="width: 65%;"></div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="small text-muted text-uppercase fw-bold mb-1">Top Hiring Industries</div>
+              <div class="d-flex flex-wrap gap-1" id="topIndustriesPills">
+                <span class="badge bg-dark border border-secondary text-secondary">Tech Startups</span>
+                <span class="badge bg-dark border border-secondary text-secondary">FinTech</span>
+                <span class="badge bg-dark border border-secondary text-secondary">Enterprise</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts & Visual Analytics Section -->
+      <div class="row g-4 mb-5">
+        <!-- Visual 1: Radar Chart (Competency Match vs Benchmark) -->
+        <div class="col-lg-7">
+          <div class="card chart-card h-100 shadow-sm p-3">
+            <div class="card-header bg-transparent border-0 pt-2 pb-0 d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="fw-bold mb-0">Domain Competency Radar</h5>
+                <span class="small text-muted">Your Profile vs 100% Target Role Benchmark</span>
+              </div>
+              <span class="badge bg-primary-subtle text-primary">Live Recalculation</span>
+            </div>
+            <div class="card-body p-2">
+              <div style="height: 330px; position: relative;">
+                <canvas id="radarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual 2: Doughnut Match Breakdown & NLP Similarity -->
+        <div class="col-lg-5">
+          <div class="card chart-card h-100 shadow-sm p-3">
+            <div class="card-header bg-transparent border-0 pt-2 pb-0">
+              <h5 class="fw-bold mb-0">Role Coverage Breakdown</h5>
+              <span class="small text-muted">Core vs Secondary Competency Coverage</span>
+            </div>
+            <div class="card-body p-2">
+              <div style="height: 230px; position: relative;">
+                <canvas id="doughnutChart"></canvas>
+              </div>
+              <div class="mt-3 p-3 rounded-3 bg-dark-subtle border">
+                <div class="d-flex justify-content-between small mb-1">
+                  <span class="text-muted"><i class="bi bi-cpu text-primary me-1"></i> NLP Cosine Text Similarity:</span>
+                  <span class="fw-bold text-light" id="nlpSimVal">74.2%</span>
+                </div>
+                <div class="d-flex justify-content-between small">
+                  <span class="text-muted"><i class="bi bi-person-badge text-info me-1"></i> Contact Info Detected:</span>
+                  <span class="fw-semibold text-info" id="contactEmailDisplay">Email Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deep Dive Tabs Section (Segmented Control) -->
+      <div class="card shadow-sm mb-5 border-0 bg-transparent">
+        <div class="custom-tabs-container mb-3">
+          <ul class="nav nav-tabs" id="analysisTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-gaps-link" data-bs-toggle="tab" data-bs-target="#tab-gaps" type="button" role="tab">
+                <i class="bi bi-exclamation-octagon text-danger"></i> Missing Skills & Checklist
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-ats-link" data-bs-toggle="tab" data-bs-target="#tab-ats" type="button" role="tab">
+                <i class="bi bi-file-earmark-check text-success"></i> ATS Health & Verbs
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-roadmap-link" data-bs-toggle="tab" data-bs-target="#tab-roadmap" type="button" role="tab">
+                <i class="bi bi-map text-primary"></i> Learning Roadmap & Prep
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-strengths-link" data-bs-toggle="tab" data-bs-target="#tab-strengths" type="button" role="tab">
+                <i class="bi bi-check-circle text-info"></i> Verified Strengths
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-allroles-link" data-bs-toggle="tab" data-bs-target="#tab-allroles" type="button" role="tab">
+                <i class="bi bi-grid-3x3-gap text-warning"></i> Multi-Role Benchmark
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-customjd-link" data-bs-toggle="tab" data-bs-target="#tab-customjd" type="button" role="tab">
+                <i class="bi bi-search text-secondary"></i> Custom JD Test
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card chart-card p-4">
+          <div class="tab-content" id="analysisTabsContent">
+
+            <!-- TAB 1: SKILL GAPS & INTERACTIVE CHECKLIST -->
+            <div class="tab-pane fade show active" id="tab-gaps" role="tabpanel">
+              <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2 pb-2 border-bottom border-secondary-subtle">
+                <div>
+                  <h5 class="fw-bold mb-0">Missing Skills Required For This Role</h5>
+                  <span class="small text-muted">Check off skills you acquire to recalculate your Readiness Score in real-time!</span>
+                </div>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2">
+                  <i class="bi bi-check2-square me-1"></i> Live Score Recalculator Active
+                </span>
+              </div>
+              <div id="gapCardsContainer" class="row g-3">
+                <!-- Dynamically populated gap cards -->
+              </div>
+            </div>
+
+            <!-- TAB 2: ATS RESUME HEALTH & SUGGESTIONS -->
+            <div class="tab-pane fade" id="tab-ats" role="tabpanel">
+              <div class="mb-4">
+                <h5 class="fw-bold mb-1">Applicant Tracking System (ATS) Health Audit</h5>
+                <p class="text-muted small">Evaluates section architecture, high-impact action verbs, quantifiable metrics, and readability.</p>
+              </div>
+
+              <div class="row g-4 mb-4">
+                <!-- Subscore 1: Section Structure -->
+                <div class="col-md-3">
+                  <div class="p-3 rounded-3 bg-dark-subtle border h-100">
+                    <div class="small text-muted fw-bold text-uppercase">Section Hygiene</div>
+                    <div class="h4 fw-bold mt-1 text-primary" id="atsSubSections">25 / 30</div>
+                    <div class="small text-muted" id="atsSectionsDetail">5 of 5 sections present</div>
+                  </div>
+                </div>
+
+                <!-- Subscore 2: Action Verbs -->
+                <div class="col-md-3">
+                  <div class="p-3 rounded-3 bg-dark-subtle border h-100">
+                    <div class="small text-muted fw-bold text-uppercase">Action Verb Density</div>
+                    <div class="h4 fw-bold mt-1 text-success" id="atsSubVerbs">22 / 25</div>
+                    <div class="small text-muted" id="atsVerbsCount">5 verbs identified</div>
+                  </div>
+                </div>
+
+                <!-- Subscore 3: Quantifiable Impact -->
+                <div class="col-md-3">
+                  <div class="p-3 rounded-3 bg-dark-subtle border h-100">
+                    <div class="small text-muted fw-bold text-uppercase">Quantifiable Impact</div>
+                    <div class="h4 fw-bold mt-1 text-warning" id="atsSubImpact">20 / 25</div>
+                    <div class="small text-muted" id="atsMetricsCount">Metrics & % detected</div>
+                  </div>
+                </div>
+
+                <!-- Subscore 4: Length & Formatting -->
+                <div class="col-md-3">
+                  <div class="p-3 rounded-3 bg-dark-subtle border h-100">
+                    <div class="small text-muted fw-bold text-uppercase">Length & Formatting</div>
+                    <div class="h4 fw-bold mt-1 text-info" id="atsSubLength">20 / 20</div>
+                    <div class="small text-muted" id="atsWordCount">Word count optimal</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- High Impact Verbs Found -->
+              <div class="mb-4">
+                <h6 class="fw-bold text-light small text-uppercase mb-2">High-Impact Action Verbs Found in Your Resume:</h6>
+                <div class="d-flex flex-wrap gap-2" id="atsActionVerbsPills"></div>
+              </div>
+
+              <!-- Passive Phrases Audit (Detected in Your Resume) -->
+              <div class="mb-4" id="atsWeakPhrasesSection">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="fw-bold text-light small text-uppercase mb-0">
+                    <i class="bi bi-search text-warning me-1"></i> Passive / Weak Phrases Detected in Your Resume:
+                  </h6>
+                  <span class="badge bg-warning-subtle text-warning" id="atsWeakPhrasesCountBadge">0 detected</span>
+                </div>
+                <div id="atsWeakPhrasesContainer" class="row g-2">
+                  <!-- Dynamically populated weak phrases before/after cards -->
+                </div>
+              </div>
+
+              <!-- Interactive ATS Power Verb Re-writer & Bullet Polisher Sandbox -->
+              <div class="card p-4 mb-4 border-primary-subtle" style="background: rgba(99, 102, 241, 0.04); border-radius: 14px;">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div>
+                    <h5 class="fw-bold mb-1 d-flex align-items-center gap-2">
+                      <span class="badge bg-primary-subtle text-primary"><i class="bi bi-lightning-charge-fill"></i> Tool</span>
+                      <span>ATS Power Verb Re-writer &amp; Bullet Polisher</span>
+                    </h5>
+                    <p class="small text-muted mb-2">Instantly convert weak or passive bullet points into quantifiable, high-impact recruiter statements.</p>
+                  </div>
+                </div>
+
+                <!-- Quick Preset Samples -->
+                <div class="mb-2">
+                  <span class="small text-muted me-2">Try quick examples:</span>
+                  <button type="button" class="btn btn-sm btn-sample ai-bullet-sample me-1 mb-1" data-sample="Worked on Python data cleaning and automated reports" data-skill="Python">
+                    Worked on Python data cleaning
+                  </button>
+                  <button type="button" class="btn btn-sm btn-sample ai-bullet-sample me-1 mb-1" data-sample="Responsible for creating web pages using HTML and CSS" data-skill="HTML/CSS">
+                    Responsible for web pages
+                  </button>
+                  <button type="button" class="btn btn-sm btn-sample ai-bullet-sample me-1 mb-1" data-sample="Handled SQL database queries and API testing" data-skill="SQL &amp; REST APIs">
+                    Handled SQL queries
+                  </button>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-md-8">
+                    <input type="text" class="form-control" id="rawBulletInput" placeholder="Paste your raw bullet (e.g. Worked on Python scripts for data processing)">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" id="bulletSkillInput" placeholder="Skill / Framework (e.g. Python, SQL)">
+                  </div>
+                </div>
+
+                <div>
+                  <button type="button" class="btn btn-primary btn-sm d-flex align-items-center gap-2 px-3" id="btnPolishBullet">
+                    <i class="bi bi-lightning-charge-fill"></i> Polish Bullet With Power Verbs
+                  </button>
+                </div>
+
+                <!-- Polished Variations Result Grid -->
+                <div id="bulletResultsContainer" class="mt-3 pt-3 border-top border-secondary-subtle d-none">
+                  <div class="small fw-bold text-light text-uppercase mb-2">High-Impact Recruiter Variations Generated:</div>
+                  <div class="row g-3" id="bulletVariationsGrid"></div>
+                </div>
+              </div>
+
+              <!-- Power Action Verbs by Recruiter Category -->
+              <div class="mb-4">
+                <h6 class="fw-bold text-light small text-uppercase mb-2">
+                  <i class="bi bi-journal-bookmark-fill text-info me-1"></i> Recruiter-Recommended Power Verbs Taxonomy:
+                </h6>
+                <div class="row g-2" id="atsPowerVerbCategoriesContainer"></div>
+              </div>
+
+              <!-- Actionable ATS Recommendations -->
+              <div class="p-4 rounded-3 border border-warning-subtle" style="background: rgba(245, 158, 11, 0.05);">
+                <h6 class="fw-bold text-warning mb-3 d-flex align-items-center gap-2">
+                  <i class="bi bi-lightbulb-fill"></i> Actionable Suggestions to Improve Your Resume
+                </h6>
+                <ul class="mb-0 ps-3 small text-muted" id="atsSuggestionsList"></ul>
+              </div>
+            </div>
+
+            <!-- TAB 3: STEP-BY-STEP LEARNING ROADMAP -->
+            <div class="tab-pane fade" id="tab-roadmap" role="tabpanel">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                <div>
+                  <h5 class="fw-bold mb-1">Personalized Step-by-Step Learning Path</h5>
+                  <p class="text-muted small mb-0">Sequential phases tailored to bridge your specific missing skills efficiently.</p>
+                </div>
+              </div>
+
+              <!-- Roadmap Timeline Container -->
+              <div class="timeline" id="roadmapTimeline"></div>
+
+              <!-- Technical Interview Prep -->
+              <div class="mt-5">
+                <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                  <i class="bi bi-chat-quote-fill text-warning"></i> Frequently Asked Interview Questions For This Role
+                </h5>
+                <div class="accordion custom-accordion" id="interviewQuestionsAccordion"></div>
+              </div>
+            </div>
+
+            <!-- TAB 4: VERIFIED STRENGTHS & BONUS SKILLS -->
+            <div class="tab-pane fade" id="tab-strengths" role="tabpanel">
+              <h5 class="fw-bold mb-3">Skills Matched In Your Profile</h5>
+              <div class="mb-4">
+                <h6 class="text-success fw-bold small text-uppercase">Verified Core Technical Skills</h6>
+                <div class="d-flex flex-wrap gap-2 mt-2" id="matchedCorePills"></div>
+              </div>
+
+              <div class="mb-4">
+                <h6 class="text-primary fw-bold small text-uppercase">Verified Secondary & Framework Skills</h6>
+                <div class="d-flex flex-wrap gap-2 mt-2" id="matchedSecondaryPills"></div>
+              </div>
+
+              <div class="mb-4">
+                <h6 class="text-info fw-bold small text-uppercase">Verified Soft Skills & Collaboration</h6>
+                <div class="d-flex flex-wrap gap-2 mt-2" id="matchedSoftPills"></div>
+              </div>
+
+              <div class="border-top border-secondary-subtle pt-4 mt-4">
+                <h6 class="text-warning fw-bold small text-uppercase">Bonus / Extra Skills (Value-Add)</h6>
+                <p class="text-muted small">These skills were detected in your profile. While not strictly mandatory for this role, they distinguish you from other candidates.</p>
+                <div class="d-flex flex-wrap gap-2 mt-2" id="bonusSkillsPills"></div>
+              </div>
+            </div>
+
+            <!-- TAB 5: ALL ROLES BENCHMARK -->
+            <div class="tab-pane fade" id="tab-allroles" role="tabpanel">
+              <div class="mb-3">
+                <h5 class="fw-bold mb-1">Multi-Role Compatibility Matrix</h5>
+                <p class="text-muted small">See which tech career paths align closest with your current skill profile.</p>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle custom-table">
+                  <thead>
+                    <tr>
+                      <th>Role Title</th>
+                      <th>Readiness Index</th>
+                      <th>Status Tier</th>
+                      <th>Skills Matched</th>
+                      <th>Core Gaps</th>
+                      <th>Market Demand</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="allRolesTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 6: CUSTOM JOB DESCRIPTION ANALYZER -->
+            <div class="tab-pane fade" id="tab-customjd" role="tabpanel">
+              <div class="mb-3">
+                <h5 class="fw-bold mb-1">Custom Job Description Gap Analyzer</h5>
+                <p class="text-muted small">Copy and paste any specific job description from LinkedIn, Indeed, or AngelList to check your fit against that single posting.</p>
+              </div>
+
+              <div class="mb-3">
+                <textarea class="form-control custom-textarea" id="customJdInput" rows="6" placeholder="Paste the Job Description (Requirements, Qualifications, Tech Stack) here..."></textarea>
+              </div>
+              <button class="btn btn-warning btn-sm d-flex align-items-center gap-2" id="analyzeCustomJdBtn">
+                <i class="bi bi-search"></i> Evaluate Fit Against This Job Description
+              </button>
+
+              <!-- Custom JD Results Container -->
+              <div id="customJdResults" class="mt-4 p-4 rounded-3 bg-dark-subtle border d-none"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive Skill Diagnostic Quiz Modal -->
+  <div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-modal text-light">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title fw-bold" id="quizModalTitle">
+            <i class="bi bi-mortarboard-fill text-warning me-2"></i> Skill Diagnostic Check: <span id="quizSkillName" class="gradient-text">Python</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" id="quizModalBody">
+          <!-- Dynamically filled with interactive quiz questions -->
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works Modal -->
+  <div class="modal fade" id="howItWorksModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-modal text-light">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title fw-bold"><i class="bi bi-info-circle text-primary me-2"></i>How the Skill Gap Analyzer Works</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 bg-secondary-subtle">
+                <h6 class="fw-bold text-primary"><i class="bi bi-file-earmark-text me-2"></i>1. NLP Text & Skill Extraction</h6>
+                <p class="small text-muted mb-0">Extracts tokenized text from PDF, DOCX, or pasted text. Uses multi-word n-gram normalization to detect technical skills, frameworks, tools, and contact info.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 bg-secondary-subtle">
+                <h6 class="fw-bold text-info"><i class="bi bi-diagram-3 me-2"></i>2. SQLite & Pandas Gap Calculation</h6>
+                <p class="small text-muted mb-0">Maps detected competencies against the job roles and required skills taxonomy stored in SQLite database. Weighs must-have core skills (2x) against secondary skills (1x).</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 bg-secondary-subtle">
+                <h6 class="fw-bold text-warning"><i class="bi bi-bar-chart-line me-2"></i>3. ATS Hygiene & Verbs Scorer</h6>
+                <p class="small text-muted mb-0">Evaluates section architecture, action verb strength, and quantifiable numbers to predict how well resume screeners parse your file.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 bg-secondary-subtle">
+                <h6 class="fw-bold text-success"><i class="bi bi-mortarboard me-2"></i>4. Dynamic Roadmap & Quizzes</h6>
+                <p class="small text-muted mb-0">Generates a tailored learning timeline with curated courses, self-diagnostic quizzes, and mock interview questions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="toast-notification d-none">
+    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+    <span id="toastMessage">Action completed successfully.</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer py-4 mt-5 border-top border-secondary text-center text-muted small">
+    <div class="container">
+      <div>Student Skill Gap Analyzer &bull; Built with Python, Flask, SQLite, Pandas &amp; Scikit-Learn NLP</div>
+      <div class="mt-1">Pair-programmed and ready for production deployment.</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

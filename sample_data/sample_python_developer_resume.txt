@@ -1,0 +1,32 @@
+Aarav Sharma
+Email: aarav.sharma@example.com | Phone: +91 98765 43210
+Location: Bangalore, India | GitHub: https://github.com/aaravsharma
+
+PROFESSIONAL SUMMARY
+Passionate and detail-oriented Python Developer with solid hands-on experience in building scalable RESTful APIs, automation scripts, and database-driven web applications. Strong grasp of object-oriented design and relational databases.
+
+TECHNICAL SKILLS
+- Programming Languages: Python, SQL
+- Frameworks & Web: Flask, REST APIs
+- Version Control & Tools: Git, GitHub, Linux, Postman
+- Core CS: Data Structures and Algorithms, OOP, Testing and Debugging
+
+WORK EXPERIENCE
+Software Engineering Intern | TechNova Solutions
+Bangalore, India | Jan 2025 - Jun 2025
+- Engineered and deployed RESTful microservices using Python and Flask, reducing response latency by 32%.
+- Optimized complex SQL queries and indexed database tables, boosting database throughput by 40%.
+- Integrated Git version control workflow with automated unit testing suites in Pytest.
+
+PROJECTS
+1. Smart API Gateway & Rate Limiter
+- Developed a high-concurrency API service in Python and Flask handling 15,000 requests per minute.
+- Integrated Redis caching and SQL persistent logging with 99.9% uptime SLA.
+
+2. Automated Data Extraction Engine
+- Built an automated web scraper and ETL pipeline in Python with robust error handling and logging.
+
+EDUCATION
+B.Tech in Computer Science and Engineering
+National Institute of Technology (NIT) | 2021 - 2025 | GPA: 8.8 / 10.0
+

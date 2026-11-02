@@ -1,0 +1,194 @@
+{
+  "roles": {
+    "data_scientist": {
+      "id": "data_scientist",
+      "title": "Data Scientist",
+      "category": "Data Science & AI",
+      "description": "Analyzes complex datasets using statistics, machine learning, and programming to extract actionable insights and build predictive models.",
+      "market_demand": 9.4,
+      "growth_rate": "+24% YoY Growth",
+      "avg_salary": "$115,000 / ₹14 - ₹24 LPA",
+      "salary_percentiles": {
+        "p25": "$85,000 / ₹9 LPA",
+        "median": "$115,000 / ₹18 LPA",
+        "p90": "$165,000 / ₹32 LPA"
+      },
+      "top_industries": ["FinTech", "HealthTech", "E-Commerce", "SaaS"],
+      "core_skills": ["Python", "SQL", "Pandas", "NumPy", "Machine Learning", "Data Visualization"],
+      "secondary_skills": ["Deep Learning", "NLP", "Data Structures & Algorithms", "Git & GitHub", "Docker", "AWS"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving", "Critical Thinking"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "machine_learning_engineer": {
+      "id": "machine_learning_engineer",
+      "title": "Machine Learning Engineer",
+      "category": "Data Science & AI",
+      "description": "Designs, builds, trains, and deploys scalable machine learning and deep learning models into production systems.",
+      "market_demand": 9.6,
+      "growth_rate": "+31% YoY Growth",
+      "avg_salary": "$125,000 / ₹16 - ₹28 LPA",
+      "salary_percentiles": {
+        "p25": "$95,000 / ₹11 LPA",
+        "median": "$125,000 / ₹22 LPA",
+        "p90": "$180,000 / ₹38 LPA"
+      },
+      "top_industries": ["Autonomous Systems", "Finance", "Healthcare AI", "Big Tech"],
+      "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "TensorFlow", "SQL", "Data Structures & Algorithms"],
+      "secondary_skills": ["Docker", "Kubernetes", "AWS", "CI/CD", "REST APIs", "Pandas", "NLP"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving"],
+      "experience_levels": ["Junior", "Mid-Level", "Senior"]
+    },
+    "ai_nlp_engineer": {
+      "id": "ai_nlp_engineer",
+      "title": "AI & NLP Engineer",
+      "category": "Data Science & AI",
+      "description": "Specializes in Large Language Models (LLMs), text processing, sentiment analysis, speech-to-text, and generative AI systems.",
+      "market_demand": 9.8,
+      "growth_rate": "+38% YoY Growth",
+      "avg_salary": "$130,000 / ₹18 - ₹32 LPA",
+      "salary_percentiles": {
+        "p25": "$100,000 / ₹12 LPA",
+        "median": "$130,000 / ₹24 LPA",
+        "p90": "$195,000 / ₹42 LPA"
+      },
+      "top_industries": ["Generative AI", "Enterprise Search", "Voice Tech", "EdTech"],
+      "core_skills": ["Python", "NLP", "Machine Learning", "Deep Learning", "PyTorch", "Data Structures & Algorithms"],
+      "secondary_skills": ["TensorFlow", "Docker", "REST APIs", "SQL", "Git & GitHub", "AWS"],
+      "soft_skills": ["Communication & Collaboration", "Critical Thinking"],
+      "experience_levels": ["Junior", "Mid-Level", "Senior"]
+    },
+    "full_stack_developer": {
+      "id": "full_stack_developer",
+      "title": "Full Stack Developer",
+      "category": "Software Engineering",
+      "description": "Develops both client and server software from responsive frontend user interfaces to robust backend architectures and databases.",
+      "market_demand": 9.5,
+      "growth_rate": "+22% YoY Growth",
+      "avg_salary": "$105,000 / ₹10 - ₹20 LPA",
+      "salary_percentiles": {
+        "p25": "$75,000 / ₹7 LPA",
+        "median": "$105,000 / ₹15 LPA",
+        "p90": "$150,000 / ₹28 LPA"
+      },
+      "top_industries": ["SaaS Startups", "E-Commerce", "Consulting", "FinTech"],
+      "core_skills": ["JavaScript", "React", "Node.js", "SQL", "REST APIs", "Git & GitHub"],
+      "secondary_skills": ["TypeScript", "Python", "MongoDB", "Docker", "CI/CD", "Linux", "Data Structures & Algorithms"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "frontend_developer": {
+      "id": "frontend_developer",
+      "title": "Frontend Developer",
+      "category": "Software Engineering",
+      "description": "Builds high-performance, responsive, and visually appealing web interfaces and single-page applications.",
+      "market_demand": 8.8,
+      "growth_rate": "+18% YoY Growth",
+      "avg_salary": "$92,000 / ₹8 - ₹16 LPA",
+      "salary_percentiles": {
+        "p25": "$65,000 / ₹5 LPA",
+        "median": "$92,000 / ₹12 LPA",
+        "p90": "$135,000 / ₹22 LPA"
+      },
+      "top_industries": ["Digital Media", "Consumer Tech", "Design Agencies", "SaaS"],
+      "core_skills": ["JavaScript", "React", "TypeScript", "Git & GitHub"],
+      "secondary_skills": ["REST APIs", "Data Visualization", "Docker", "Node.js"],
+      "soft_skills": ["Communication & Collaboration", "Attention to Detail"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "backend_developer_python": {
+      "id": "backend_developer_python",
+      "title": "Backend Developer (Python)",
+      "category": "Software Engineering",
+      "description": "Constructs reliable server-side business logic, APIs, database architectures, and microservices using Python frameworks.",
+      "market_demand": 9.2,
+      "growth_rate": "+25% YoY Growth",
+      "avg_salary": "$108,000 / ₹12 - ₹22 LPA",
+      "salary_percentiles": {
+        "p25": "$80,000 / ₹8 LPA",
+        "median": "$108,000 / ₹16 LPA",
+        "p90": "$155,000 / ₹30 LPA"
+      },
+      "top_industries": ["Cloud Services", "Finance", "Gaming Backends", "API Platforms"],
+      "core_skills": ["Python", "Flask", "Django", "SQL", "REST APIs", "Git & GitHub"],
+      "secondary_skills": ["Docker", "AWS", "MongoDB", "Linux", "CI/CD", "Data Structures & Algorithms"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "data_analyst": {
+      "id": "data_analyst",
+      "title": "Data Analyst",
+      "category": "Data Science & Analytics",
+      "description": "Transforms raw transactional and business data into clear reports, metrics, executive dashboards, and statistical findings.",
+      "market_demand": 9.1,
+      "growth_rate": "+20% YoY Growth",
+      "avg_salary": "$85,000 / ₹7 - ₹14 LPA",
+      "salary_percentiles": {
+        "p25": "$60,000 / ₹5 LPA",
+        "median": "$85,000 / ₹10 LPA",
+        "p90": "$120,000 / ₹18 LPA"
+      },
+      "top_industries": ["Retail", "Banking", "Logistics", "Marketing Analytics"],
+      "core_skills": ["SQL", "Pandas", "Data Visualization", "Python"],
+      "secondary_skills": ["NumPy", "Git & GitHub", "REST APIs", "Communication & Collaboration"],
+      "soft_skills": ["Communication & Collaboration", "Critical Thinking", "Presentation"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "devops_cloud_engineer": {
+      "id": "devops_cloud_engineer",
+      "title": "DevOps & Cloud Engineer",
+      "category": "Infrastructure & Cloud",
+      "description": "Automates deployment pipelines, provisions scalable cloud infrastructure, and ensures system resilience and observability.",
+      "market_demand": 9.7,
+      "growth_rate": "+29% YoY Growth",
+      "avg_salary": "$120,000 / ₹14 - ₹26 LPA",
+      "salary_percentiles": {
+        "p25": "$90,000 / ₹10 LPA",
+        "median": "$120,000 / ₹20 LPA",
+        "p90": "$175,000 / ₹35 LPA"
+      },
+      "top_industries": ["Cloud Computing", "Banking", "Cybersecurity", "Enterprise Tech"],
+      "core_skills": ["Docker", "Kubernetes", "AWS", "CI/CD", "Linux", "Git & GitHub"],
+      "secondary_skills": ["Python", "SQL", "Cybersecurity", "REST APIs"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving", "Troubleshooting"],
+      "experience_levels": ["Junior", "Mid-Level", "Senior"]
+    },
+    "cybersecurity_analyst": {
+      "id": "cybersecurity_analyst",
+      "title": "Cybersecurity Analyst",
+      "category": "Security & Networks",
+      "description": "Safeguards systems and network assets, monitors for security incidents, performs vulnerability assessments, and implements defense protocols.",
+      "market_demand": 9.3,
+      "growth_rate": "+33% YoY Growth",
+      "avg_salary": "$102,000 / ₹10 - ₹20 LPA",
+      "salary_percentiles": {
+        "p25": "$75,000 / ₹8 LPA",
+        "median": "$102,000 / ₹15 LPA",
+        "p90": "$150,000 / ₹27 LPA"
+      },
+      "top_industries": ["Defense", "Banking & Finance", "Healthcare", "Government"],
+      "core_skills": ["Cybersecurity", "Linux", "Python", "Git & GitHub"],
+      "secondary_skills": ["SQL", "Docker", "AWS", "CI/CD"],
+      "soft_skills": ["Communication & Collaboration", "Critical Thinking", "Ethical Mindset"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    },
+    "software_engineer_general": {
+      "id": "software_engineer_general",
+      "title": "Software Engineer (Generalist)",
+      "category": "Software Engineering",
+      "description": "Applies fundamental software engineering principles, algorithms, and modular design across various application stacks.",
+      "market_demand": 9.4,
+      "growth_rate": "+19% YoY Growth",
+      "avg_salary": "$105,000 / ₹10 - ₹22 LPA",
+      "salary_percentiles": {
+        "p25": "$78,000 / ₹8 LPA",
+        "median": "$105,000 / ₹16 LPA",
+        "p90": "$160,000 / ₹30 LPA"
+      },
+      "top_industries": ["Big Tech", "Enterprise Solutions", "FinTech", "Startups"],
+      "core_skills": ["Data Structures & Algorithms", "Python", "Java", "SQL", "Git & GitHub", "REST APIs"],
+      "secondary_skills": ["Docker", "Linux", "CI/CD", "JavaScript", "C++"],
+      "soft_skills": ["Communication & Collaboration", "Problem Solving"],
+      "experience_levels": ["Fresher", "Junior", "Mid-Level"]
+    }
+  }
+}
